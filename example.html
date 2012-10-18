@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"> 
+		
+		<title>Mobile Viewport</title>
+		
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script type="text/javascript" src="jquery.scriptloader.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$("body").scriptloader({
+					start:	false,
+					onComplete: function() {
+						$("#log").append("<li>All scripts loaded.</li>");
+						$("#log").append("<li>a="+a+"</li>");
+						$("#log").append("<li>b="+b+"</li>");
+						$("#log").append("<li>c="+c+"</li>");
+						
+					},
+					onScriptLoad: function(scriptName) {
+						$("#log").append("<li>Script \""+scriptName+"\" loaded.</li>");
+					},
+					scripts: ["test1.js","test2.js","test3.js"]
+				});
+				$("#btn_start").click(function() {
+					$("body").scriptloader("start");
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<button id="btn_start">Start</button>
+		<h4>Log:</h4>
+		<ul id="log"></ul>
+	</body>
+</html>
